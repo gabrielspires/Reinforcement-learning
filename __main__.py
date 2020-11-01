@@ -1,5 +1,6 @@
-from utils import show_map, read_input_file
 from sys import argv
+
+from warehouse import Warehouse
 
 if __name__ == "__main__":
     input_file = argv[1]
@@ -8,15 +9,16 @@ if __name__ == "__main__":
     epsilon = argv[4]  # Fator de exploração da estratégia epsilon-greedy
     n = argv[5]  # Número de episódios de treinamento
 
-    map_height, map_width, max_steps, map_ = read_input_file(input_file)
+    warehouse = Warehouse(input_file)
 
     # import time
     # start = time.time()
 
     # Debug
-    print("\nFile: ", input_file, "Max steps:", max_steps)
+    print("\nFile: ", input_file, "\tMax steps:", warehouse.max_steps)
     print("Alpha:", alpha, "Lambda:", lambda_, "Epsilon:", epsilon, "Episodes:", n, "\n")
-    show_map(map_)
+    print("Posição inicial:", warehouse.random_valid_position())
+    warehouse.show_map()
 
     # Programa
 
