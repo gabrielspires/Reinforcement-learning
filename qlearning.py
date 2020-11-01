@@ -42,7 +42,18 @@ class Qlearning(object):
                             q_table += f"({x}, {y}, {steps_left}), {move},"
                             q_table += f'{"%0.2f" % self.q_table[x][y][steps_left][move]}\n'
         print(q_table)
-        print(q_table_size)
+        print("Q-Table size:", q_table_size)
+        # Q-Table:
+        #  x, y, w   move   reward
+        # (1, 1, 0), RIGHT, 0.00
+        # (1, 1, 0), LEFT,  0.00
+        # (1, 1, 0), UP,    0.00
+        # (1, 1, 0), DOWN,  0.00
+        # (1, 1, 1), RIGHT, 0.00
+        # (1, 1, 1), LEFT,  0.00
+        # (1, 1, 1), UP,    0.00
+        # (1, 1, 1), DOWN,  0.00
+        # ...
 
     def __str__(self):
         return (
