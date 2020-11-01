@@ -8,7 +8,7 @@ class Qlearning(object):
         self.lambda_ = lambda_
         self.epsilon = epsilon
         self.n = n
-        self.max_steps = warehouse.max_steps
+        self.steps_left = warehouse.max_steps
         self.actual_state = warehouse.random_valid_position()
         self.moves = ["RIGHT", "LEFT", "UP", "DOWN"]
 
@@ -21,7 +21,7 @@ class Qlearning(object):
             self.q_table[str(i)] = {}
             for j in range(len(self.warehouse.map_[i])):
                 self.q_table[str(i)][str(j)] = {}
-                for steps_left in range(0, self.max_steps + 1):
+                for steps_left in range(0, self.steps_left + 1):
                     self.q_table[str(i)][str(j)][str(steps_left)] = {}
                     position = self.warehouse.map_[i][j]
                     if position == "." or position == "#":
@@ -71,15 +71,26 @@ class Qlearning(object):
     def reward(self, i, j):
         i = int(i)
         j = int(j)
+        reward = 0
 
+        # Se o número de passos restantes é 0 e o estado não é "#" a recompensa é -10
+        if self.warehouse.map_[i][j] != "#" and self.steps_left == 0:
+            reward = -10
         # Se o estado for "." a recompensa é -1
-
+        elif self.warehouse.map_[i][j] == ".":
+            reward = -1
         # Se o estado for "#" a recompensa é +1
-
-        # Se o estado for "*" ou o número de passos
-        # restantes é 0 e o estado não é "#" a recompensa é -10
-
+        elif self.warehouse.map_[i][j] == "#":
+            reward = 1
+            # Atualizar self.steps_left aqui ????????????????????????????
+        # Se o estado for "*" a recompensa é -10
+        elif self.warehouse.map_[i][j] == "*":
+            reward = -10
         # Se o estado for "$" a recompensa é +10
+        elif self.warehouse.map_[i][j] == "$":
+            reward = 10
+
+        return reward
 
     def move(self, direction):
         if direction == "RIGHT":
