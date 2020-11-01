@@ -1,4 +1,5 @@
 from sys import argv
+from pprint import pp
 
 from warehouse import Warehouse
 from qlearning import Qlearning
@@ -22,6 +23,7 @@ if __name__ == "__main__":
     print("Q-Table:\n x, y, w   move   reward")
     qlearning.show_q_table()
     warehouse.show_map()
+    pp(qlearning.q_table)
 
     # Programa
 
