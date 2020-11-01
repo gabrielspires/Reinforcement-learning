@@ -25,11 +25,11 @@ class Warehouse(object):
         # O ponto de coleta não pode ser um ponto inicial
         # A posição aleatória é entre 1 e dimensão-2 pra ignorar as paredes externas
         while True:
-            x = random.randint(1, self.map_height - 2)
-            y = random.randint(1, self.map_width - 2)
+            i = random.randint(1, self.map_height - 2)
+            j = random.randint(1, self.map_width - 2)
 
-            if self.map_[x][y] == "." or self.map_[x][y] == "#":
-                return (x, y)
+            if self.map_[i][j] == "." or self.map_[i][j] == "#":
+                return (i, j)
 
     def show_map(self):
         num_linha = 0
