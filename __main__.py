@@ -7,7 +7,7 @@ from qlearning import Qlearning
 if __name__ == "__main__":
     input_file = argv[1]
     alpha = float(argv[2])  # Taxa de aprendizado
-    lambda_ = float(argv[3])  # Fator de desconto
+    lambda_ = float(argv[3])  # Fator de desconto (que é gama na verdade)
     epsilon = float(argv[4])  # Fator de exploração da estratégia epsilon-greedy
     n = int(argv[5])  # Número de episódios de treinamento
 
@@ -22,8 +22,8 @@ if __name__ == "__main__":
     print(qlearning)
 
     # Printa a q-table no formato final da saída (pra visualizar)
-    print("Q-Table:\n x, y, w   move   reward")
-    qlearning.show_q_table()
+    # print("Q-Table:\n x, y, w   move   reward")
+    # qlearning.show_q_table()
 
     # Printa o mapa do galpão (pra visualizar)
     warehouse.show_map()
@@ -33,15 +33,17 @@ if __name__ == "__main__":
 
     # Programa
 
-    # qlearning.learn()
+    qlearning.learn()
 
+    print("Q-Table:\n x, y, w   move   reward")
+    qlearning.show_q_table()
     # end = time.time()
     # print("Time elapsed -", input_file.split("/")[-1] + ", " + str(end - start) + "s")
 
 # Info:
 
 # Modelagem MDP<S,A,R,T>
-#   S = posições onde o AGV pode andar (., #, $)
+#   S = posições onde o AGV pode andar (*,., #, $)
 #   A = conjunto de ações (RIGHT, LEFT, UP, DOWN) ver qlearning.moves
 #   R = Função de recompensa (ver qlearning.reward())
 #   T = Função de transição (UP no estado (3,1) leva para o estado (2,1) por exemplo),
