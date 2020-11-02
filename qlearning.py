@@ -169,7 +169,7 @@ class Qlearning(object):
 
     def learn(self):
         n = self.n
-        for i in range(self.warehouse.max_steps + 1, 0, -1):
+        for i in range(0, self.warehouse.max_steps + 1):
             self.steps = i
             self.n = n
             while self.n:
