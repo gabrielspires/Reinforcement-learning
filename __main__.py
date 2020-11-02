@@ -54,3 +54,6 @@ if __name__ == "__main__":
 # {'x': {'y': {'steps_left': {'move': reward}}}}
 # Saída no formato do TP:
 # (x, y, steps_left), move, best_reward
+
+# duvidas
+# as paredes tem que ter valor na qtable?

@@ -24,9 +24,10 @@ class Warehouse(object):
         # O AGV começa em lugares aleatórios no q-learning
         # O ponto de coleta não pode ser um ponto inicial
         # A posição aleatória é entre 1 e dimensão-2 pra ignorar as paredes externas
+        # Ignorar comentário anterior, não existe parede externa
         while True:
-            i = random.randint(1, self.map_height - 2)
-            j = random.randint(1, self.map_width - 2)
+            i = random.randint(0, self.map_height - 1)
+            j = random.randint(1, self.map_width - 1)
 
             if self.map_[i][j] == "." or self.map_[i][j] == "#":
                 return (i, j)
