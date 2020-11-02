@@ -40,7 +40,15 @@ if __name__ == "__main__":
 
 # Info:
 
+# Modelagem MDP<S,A,R,T>
+#   S = posições onde o AGV pode andar (., #, $)
+#   A = conjunto de ações (RIGHT, LEFT, UP, DOWN) ver qlearning.moves
+#   R = Função de recompensa (ver qlearning.reward())
+#   T = Função de transição (UP no estado (3,1) leva para o estado (2,1) por exemplo),
+#       se o AGV tentar se mover para uma parede ele continua no mesmo estado e ganha -10
+#       ver qlearning.move()
+
 # Formato da Q-Table:
 # {'x': {'y': {'steps_left': {'move': reward}}}}
-# Saída do TP:
+# Saída no formato do TP:
 # (x, y, steps_left), move, best_reward
