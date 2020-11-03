@@ -18,8 +18,8 @@ if __name__ == "__main__":
 
     # Debug
     # Printa o arquivo, os argumentos e os steps (pra ver se ta pegando certo)
-    print("\nFile: ", input_file, "\tMax steps:", warehouse.max_steps)
-    print(qlearning)
+    # print("\nFile: ", input_file, "\tMax steps:", warehouse.max_steps)
+    # print(qlearning)
 
     # Printa a q-table no formato final da saída (pra visualizar)
     # print("Q-Table:\n x, y, w   move   reward")
@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     qlearning.learn()
 
-    print("Q-Table:\n x, y, w   move   reward")
+    # print("Q-Table:\n x, y, w   move   reward")
     qlearning.show_q_table()
     # end = time.time()
     # print("Time elapsed -", input_file.split("/")[-1] + ", " + str(end - start) + "s")
