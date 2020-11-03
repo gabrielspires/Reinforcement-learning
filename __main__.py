@@ -40,6 +40,22 @@ if __name__ == "__main__":
     # end = time.time()
     # print("Time elapsed -", input_file.split("/")[-1] + ", " + str(end - start) + "s")
 
+    with open(
+        "rewards/"
+        + argv[1]
+        + "_"
+        + str(alpha)
+        + "_"
+        + str(lambda_)
+        + "_"
+        + str(epsilon)
+        + "_"
+        + str(n)
+        + ".txt",
+        "w",
+    ) as reward_mean_file:
+        reward_mean_file.write(qlearning.show_mean_reward())
+
 # Info:
 
 # Modelagem MDP<S,A,R,T>
